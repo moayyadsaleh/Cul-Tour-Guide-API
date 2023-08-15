@@ -30,6 +30,19 @@ db.on('disconnected', () => {
     console.log('Mongoose disconnected');
 });
 
+// Define the culturalFactSchema
+const culturalFactSchema = new mongoose.Schema({
+    culturalFact: {
+      type: String,
+      required: true,
+    },
+    country: {
+      type: String,
+      required: true,
+    },
+  });
+
+const CulturalFact = mongoose.model('CulturalFact', culturalFactSchema);
 //Create and add cultural facts to the DB
 const culturalFactsToAdd = [
     { culturalFact: 'In Japan, it is considered polite to slurp your noodles while eating.', country: 'Japan' },
@@ -611,31 +624,19 @@ const culturalFactsToAdd = [
   { 
     culturalFact: 'Argentina: In the rhythm of "Tango," bodies merge like whispers of passion, a dance that tells tales of love, desire, and the bittersweet embrace of Buenos Aires\' enigmatic soul.',
     country: 'Argentina'
-  },
+  }
 
 ];
+
 //Now lets add the cultural facts through code
-//CulturalFact.insertMany()
-//.then(insertedDocs => {
-    //console.log('Documents inserted:', insertedDocs);
-  //})
-  //.catch(error => {
-    //console.error('Error inserting documents:', error);
- // });
 
-const culturalFactSchema = new mongoose.Schema({
-  culturalFact: {
-    type: String,
-    required: true,
-  },
-  country: {
-    type: String,
-    required: true,
-  },
-});
-
-const CulturalFact = mongoose.model('CulturalFact', culturalFactSchema);
-
+CulturalFact.insertMany(culturalFactsToAdd)
+  .then(insertedDocs => {
+    console.log('Documents inserted:', insertedDocs);
+  })
+  .catch(error => {
+    console.error('Error inserting documents:', error);
+  });
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

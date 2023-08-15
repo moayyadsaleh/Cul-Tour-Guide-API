@@ -1,6 +1,14 @@
 //Import packages
 import express from "express";
 import mongoose from 'mongoose';
+import rateLimit from 'express-rate-limit';
+
+// Apply rate limiting middleware to specific routes
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Max requests per window
+    message: 'Too many requests from this IP, please try again later.',
+  });
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -48,7 +56,7 @@ const culturalFactSchema = new mongoose.Schema({
 //////////////////////////// Requests Targeting all culturalFacts
 
 //Display all cultural facts
-app.get('/cultural-facts', async (req, res) => {
+app.get('/cultural-facts',apiLimiter, async (req, res) => {
     try {
       const foundCulturalFacts = await CulturalFact.find();
       console.log(foundCulturalFacts, "Cultural facts are successfully fetched");
@@ -60,7 +68,7 @@ app.get('/cultural-facts', async (req, res) => {
   });
 
   //Add new cultural fact
-  app.post('/cultural-facts', async (req, res) => {
+  app.post('/cultural-facts', apiLimiter, async (req, res) => {
     try {
       console.log(req.body.culturalFact);
       console.log(req.body.country);
@@ -84,7 +92,7 @@ app.get('/cultural-facts', async (req, res) => {
   });
 
   //delete all cultural facts. This is not going to be used in the documentation
-  app.delete("/cultural-facts", async (req, res) => {
+  app.delete("/cultural-facts", apiLimiter, async (req, res) => {
     try {
       const deletedCulturalFacts = await CulturalFact.deleteMany();
       console.log(deletedCulturalFacts, "All articles are successfully deleted");
@@ -98,7 +106,7 @@ app.get('/cultural-facts', async (req, res) => {
 
 
 ////////////////////////////Requests Targeting individual culturalFacts
-app.get("/cultural-facts/:id", async (req, res) => {
+app.get("/cultural-facts/:id",apiLimiter, async (req, res) => {
     try {
       const factId = req.params.id;
   
@@ -115,7 +123,7 @@ app.get("/cultural-facts/:id", async (req, res) => {
   });
 
   //Request for updating one cultural fact
-  app.put("/cultural-facts/:id", async (req, res) => {
+  app.put("/cultural-facts/:id",apiLimiter, async (req, res) => {
     try {
       const factId = req.params.id;
   
@@ -136,7 +144,7 @@ app.get("/cultural-facts/:id", async (req, res) => {
   });
 
 
-  app.patch("/cultural-facts/:id", async (req, res) => {
+  app.patch("/cultural-facts/:id",apiLimiter, async (req, res) => {
     try {
       const factId = req.params.id;
   
@@ -158,7 +166,7 @@ app.get("/cultural-facts/:id", async (req, res) => {
   });
 
 
-  app.delete("/cultural-facts/:id", async (req, res) => {
+  app.delete("/cultural-facts/:id", apiLimiter, async (req, res) => {
     try {
       const factId = req.params.id;
   

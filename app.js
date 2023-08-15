@@ -91,6 +91,21 @@ app.get(
       }
     }
   );
+//Display a random cultural fact
+  app.get('/random-cultural-fact', validateAndSanitizeInput, apiLimiter, async (req, res) => {
+    try {
+      const randomFact = await CulturalFact.aggregate([{ $sample: { size: 1 } }]);
+      if (randomFact.length === 0) {
+        res.status(404).send({ error: 'No cultural facts found.' });
+      } else {
+        res.send(randomFact[0]);
+      }
+    } catch (error) {
+      res.status(500).send({ error: 'An error occurred while retrieving a random cultural fact.' });
+    }
+  });
+
+
   //Add new cultural fact
   app.post(
     '/cultural-facts',

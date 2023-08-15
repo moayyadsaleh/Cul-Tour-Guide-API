@@ -45,7 +45,7 @@ const culturalFactSchema = new mongoose.Schema({
   //Define Model
   const CulturalFact = mongoose.model('CulturalFact', culturalFactSchema );
 
-//////////////////////////// Create RESTful API: Requests Targeting all culturalFactS
+//////////////////////////// Requests Targeting all culturalFacts
 
 //Display all cultural facts
 app.get('/cultural-facts', async (req, res) => {
@@ -60,7 +60,6 @@ app.get('/cultural-facts', async (req, res) => {
   });
 
   //Add new cultural fact
-
   app.post('/cultural-facts', async (req, res) => {
     try {
       console.log(req.body.culturalFact);
@@ -84,9 +83,101 @@ app.get('/cultural-facts', async (req, res) => {
     }
   });
 
+  //delete all cultural facts. This is not going to be used in the documentation
+  app.delete("/cultural-facts", async (req, res) => {
+    try {
+      const deletedCulturalFacts = await CulturalFact.deleteMany();
+      console.log(deletedCulturalFacts, "All articles are successfully deleted");
+      res.json(deletedCulturalFacts);
+    } catch (error) {
+      console.error("Error deleting cultural facts", error);
+      res.status(500).send("Error deleting articles");
+    }
+  });
 
 
+
+////////////////////////////Requests Targeting individual culturalFacts
+app.get("/cultural-facts/:id", async (req, res) => {
+    try {
+      const factId = req.params.id;
+  
+      const foundFact = await CulturalFact.findById(factId);
+  
+      if (foundFact) {
+        res.send(foundFact); // 
+      } else {
+        res.status(404).send({ error: 'Cultural fact not found.' });
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'An error occurred while retrieving the cultural fact.' });
+    }
+  });
+
+  //Request for updating one cultural fact
+  app.put("/cultural-facts/:id", async (req, res) => {
+    try {
+      const factId = req.params.id;
+  
+      // Update both the cultural fact content and country
+      const updatedFact = await CulturalFact.findByIdAndUpdate(factId, {
+        culturalFact: req.body.culturalFact,
+        country: req.body.country,
+      }, { new: true }); // 
+  
+      if (updatedFact) {
+        res.json(updatedFact);
+      } else {
+        res.status(404).json({ error: 'Cultural fact not found.'});
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'An error occurred while updating the cultural fact.' });
+    }
+  });
+
+
+  app.patch("/cultural-facts/:id", async (req, res) => {
+    try {
+      const factId = req.params.id;
+  
+      // Update specific fields of the cultural fact (culturalFact and/or country)
+      const updatedFact = await CulturalFact.findByIdAndUpdate(
+        factId,
+        { $set: req.body }, //  $set  updates only specified fields
+        { new: true }
+      );
+  
+      if (updatedFact) {
+        res.send(updatedFact);
+      } else {
+        res.status(404).send({ error: 'Cultural fact not found.' });
+      }
+    } catch (error) {
+      res.status(500).send({ error: 'An error occurred while updating the cultural fact.' });
+    }
+  });
+
+
+  app.delete("/cultural-facts/:id", async (req, res) => {
+    try {
+      const factId = req.params.id;
+  
+      // Find and delete the cultural fact based on its ID
+      const deletedFact = await CulturalFact.findByIdAndDelete(factId);
+  
+      if (deletedFact) {
+        res.json({ message: 'Cultural fact deleted successfully.' });
+      } else {
+        res.status(404).json({ error: 'Cultural fact not found.' });
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'An error occurred while deleting the cultural fact.' });
+    }
+  });
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+
+//test document : localhost:3000/cultural-facts/64daf25be2ef90c0481aff8f

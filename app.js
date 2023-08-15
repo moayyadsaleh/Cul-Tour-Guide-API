@@ -37,7 +37,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 
 //Connect to MongoDB
-const uri = "mongodb+srv://moayyedazzam:0S7oROl68buOOAfX@cluster0.dny87pr.mongodb.net/culturalFactsDB?retryWrites=true&w=majority";
+const uri = "mongodb+srv://userName:Password@cluster0.dny87pr.mongodb.net/culturalFactsDB?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB');

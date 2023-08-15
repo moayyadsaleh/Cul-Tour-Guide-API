@@ -59,6 +59,8 @@ app.get('/cultural-facts', async (req, res) => {
     }
   });
 
+  //Add new cultural fact
+
   app.post('/cultural-facts', async (req, res) => {
     try {
       console.log(req.body.culturalFact);

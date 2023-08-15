@@ -1,77 +1,153 @@
-# Cul-Tour-Guide-API
-# Cultural Facts API Documentation
-Welcome to the Cultural Facts API documentation. This API allows you to manage and retrieve cultural facts from various countries. Explore the endpoints below to interact with the API and retrieve interesting cultural insights.
-Base URL: http://localhost:3000
+# API Documentation: Cultural Facts API
 
-# Rate Limiting
-The API enforces rate limiting to prevent abuse. Users are limited to a certain number of requests within a specified time window.
+This documentation outlines the endpoints and functionality of this RESTful Cultural Facts API. The API allows you to manage and retrieve cultural facts stored in a MongoDB database.
 
-Window: 15 minutes
-Max Requests per Window: 100
+# Base URL: https://fast-gorge-30794-8b2624f5e76f.herokuapp.com
 
-# Endpoints
-Get All Cultural Facts
-Retrieves a list of all cultural facts from the database.
+# List of Endpoints:
 
-# URL: /cultural-facts
-Method: GET
-Rate Limiting: Applied
-Response: List of cultural facts or an error message.
-Get Random Cultural Fact
-Retrieves a random cultural fact from the database.
+Display All Cultural Facts
 
-# URL: /random-cultural-fact
-Method: GET
-Rate Limiting: Applied
-Response: A random cultural fact or an error message.
-Add New Cultural Fact
-Adds a new cultural fact to the database.
+Endpoint: /cultural-facts
+HTTP Method: GET
+Description: Fetches all cultural facts stored in the database.
+Query Parameters: None
+Rate Limiting: Applied (max 100 requests per 15 minutes)
+Response: An array of cultural facts and their associated countries.
+Sample Request:https://fast-gorge-30794-8b2624f5e76f.herokuapp.com/cultural-facts
+Sample Response: [
+  {
+    "_id": "61522a9e2bb1820015dcecb7",
+    "culturalFact": "Sample fact 1.",
+    "country": "Sample country 1."
+  },
+  {
+    "_id": "61522aa42bb1820015dcecb8",
+    "culturalFact": "Sample fact 2.",
+    "country": "Sample country 2."
+  },
+  ...
+]
 
-# URL: /cultural-facts
-Method: POST
-Rate Limiting: Applied
-Request Body:
-{
-  "culturalFact": "The cultural fact description.",
-  "country": "The country associated with the fact."
+# Display a Random Cultural Fact
+
+Endpoint: /random-cultural-fact
+HTTP Method: GET
+Description: Retrieves a random cultural fact from the database.
+Query Parameters: None
+Rate Limiting: Applied (max 100 requests per 15 minutes)
+Response: A single random cultural fact with its associated country.
+Sample Request:https://fast-gorge-30794-8b2624f5e76f.herokuapp.com/random-cultural-fact
+Sample Response: {
+  "_id": "61522a9e2bb1820015dcecb7",
+  "culturalFact": "Sample fact 1.",
+  "country": "Sample country 1."
 }
 
-Response: The added cultural fact or an error message.
-Get Individual Cultural Fact
-Retrieves an individual cultural fact based on its ID.
 
-# URL: /cultural-facts/:id
-Method: GET
-Rate Limiting: Applied
-Response: The requested cultural fact or an error message.
-Update Individual Cultural Fact
-Updates an individual cultural fact based on its ID.
+# Add a New Cultural Fact
 
-# URL: /cultural-facts/:id
-Method: PUT
-Rate Limiting: Applied
-Request Body:
+Endpoint: /cultural-facts
+HTTP Method: POST
+Description: Adds a new cultural fact to the database.
+Request Body:{
+  "culturalFact": "New fact.",
+  "country": "New country."
+}
+
+Rate Limiting: Applied (max 100 requests per 15 minutes)
+Response: The added cultural fact with its associated country.
+Sample Request:
+POST /cultural-facts
+Content-Type: application/json
+
 {
-  "culturalFact": "Updated fact description.",
+  "culturalFact": "New fact.",
+  "country": "New country."
+}
+
+Sample Response:{
+  "_id": "61522a9e2bb1820015dcecb7",
+  "culturalFact": "New fact.",
+  "country": "New country."
+}
+
+# Retrieve a Specific Cultural Fact
+
+Endpoint: /cultural-facts/:id
+HTTP Method: GET
+Description: Retrieves a specific cultural fact by its ID.
+Path Parameter: id (ID of the cultural fact)
+Rate Limiting: Applied (max 100 requests per 15 minutes)
+Response: The cultural fact with the specified ID and its associated country.
+Sample Request: GET /cultural-facts/61522a9e2bb1820015dcecb7
+Sample Response:
+{
+  "_id": "61522a9e2bb1820015dcecb7",
+  "culturalFact": "Sample fact 1.",
+  "country": "Sample country 1."
+}
+
+# Update a Specific Cultural Fact
+
+Endpoint: /cultural-facts/:id
+HTTP Method: PUT
+Description: Updates a specific cultural fact by its ID.
+Path Parameter: id (ID of the cultural fact)
+Request Body:{
+  "culturalFact": "Updated fact.",
   "country": "Updated country."
 }
 
-Response: The updated cultural fact or an error message.
-Partially Update Individual Cultural Fact
-Partially updates an individual cultural fact based on its ID.
+Rate Limiting: Applied (max 100 requests per 15 minutes)
+Response: The updated cultural fact with its associated country.
+Sample Request:PUT /cultural-facts/61522a9e2bb1820015dcecb7
+Content-Type: application/json
 
-# URL: /cultural-facts/:id
-Method: PATCH
-Rate Limiting: Applied
-Request Body: Fields to update (culturalFact and/or country).
-Response: The updated cultural fact or an error message.
-Delete Individual Cultural Fact
-Deletes an individual cultural fact based on its ID.
+{
+  "culturalFact": "Updated fact.",
+  "country": "Updated country."
+}
+Sample Response:
+{
+  "_id": "61522a9e2bb1820015dcecb7",
+  "culturalFact": "Updated fact.",
+  "country": "Updated country"}
 
-# URL: /cultural-facts/:id
-Method: DELETE
-Rate Limiting: Applied
-Response: Success message or an error message.
-# Error Handling
-In case of errors, the API will provide appropriate error responses with relevant status codes and error messages. Common errors include validation errors, not found errors, and server errors.
+  Update Specific Fields of a Cultural Fact
+
+ # Endpoint: /cultural-facts/:id
+HTTP Method: PATCH
+Description: Updates specific fields of a cultural fact by its ID.
+Path Parameter: id (ID of the cultural fact)
+Request Body: A JSON object containing the fields to be updated (culturalFact and/or country).
+Rate Limiting: Applied (max 100 requests per 15 minutes)
+Response: The updated cultural fact with its associated country.
+Sample Request:PATCH /cultural-facts/61522a9e2bb1820015dcecb7
+Content-Type: application/json
+
+{
+  "culturalFact": "Updated fact."
+}
+
+Sample Response: {
+  "_id": "61522a9e2bb1820015dcecb7",
+  "culturalFact": "Updated fact.",
+  "country": "Sample country 1."
+}
+
+Delete a Specific Cultural Fact
+
+Endpoint: /cultural-facts/:id
+HTTP Method: DELETE
+Description: Deletes a specific cultural fact by its ID.
+Path Parameter: id (ID of the cultural fact)
+Rate Limiting: Applied (max 100 requests per 15 minutes)
+Response: A success message.
+Sample Request: DELETE /cultural-facts/61522a9e2bb1820015dcecb7
+Sample Response: {
+  "message": "Cultural fact deleted successfully."
+}
+
+Please note that the API uses rate limiting to ensure a controlled number of requests within a specific timeframe. Additionally, validation and sanitization are applied to input data to enhance data integrity. Make sure to replace placeholders like :id with actual values when making requests.
 

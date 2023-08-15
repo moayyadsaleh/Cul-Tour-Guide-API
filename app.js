@@ -428,7 +428,191 @@ const culturalFactsToAdd = [
   { culturalFact: 'Among the rhythms of Brazil\'s "Capoeira," dance and combat entwine like spirits in motion, a celebration of freedom and strength that echoes the resilience of ancestors.', country: 'Brazil' },
   { culturalFact: 'Within the tranquility of Japan\'s "Zen Gardens," raked gravel and carefully placed stones invite meditation and reflection, a path to inner stillness amid the chaos of the world.', country: 'Japan' },
   { culturalFact: 'Amidst the colors of Ghana\'s "Kente Cloth," stories are woven like threads, each vibrant pattern a narrative that whispers of unity, pride, and cultural heritage.', country: 'Ghana' },
-  // Feel free to continue adding more facts and countries
+  { culturalFact: 'Amidst the pyramids of Mexico, the "Teotihuacan" complex rises like a city of gods, a testament to ancient engineering and spirituality that still mystifies archaeologists.', country: 'Mexico' },
+  { culturalFact: 'Within the fjords of New Zealand, "Maori Carvings" etch tales of ancestors and traditions into wood and stone, a living art form that bridges the past and the present.', country: 'New Zealand' },
+  { culturalFact: 'In the heart of Mongolia, the "Ger" or "Yurt" stands like a portable home, a nomadic symbol of resilience that embraces the vast landscapes and changing horizons.', country: 'Mongolia' },
+  { culturalFact: 'Among the pages of Indian "Epics," gods and heroes rise like constellations, their tales a cosmic dance that merges the realms of myth, morality, and humanity.', country: 'India' },
+  { culturalFact: 'Beneath the rhythm of Irish "Step Dance," feet tap like whispers on the earth, a spirited celebration that weaves history, tradition, and music into a mesmerizing spectacle.', country: 'Ireland' },
+  { culturalFact: 'Within the bustling markets of Turkey, the "Grand Bazaar" unfurls like a labyrinthine tapestry of treasures, where ancient alleyways whisper tales of commerce and culture.', country: 'Turkey' },
+  { culturalFact: 'Amidst the colors of South Africa\'s "Ndebele Art," geometric patterns tell stories of identity, unity, and heritage, painted with vibrant hues on walls and ceramics.', country: 'South Africa' },
+  { culturalFact: 'In the heart of China, "Confucianism" emerges as a philosophy that guides generations, emphasizing respect, family, and social harmony as pillars of a meaningful life.', country: 'China' },
+  { culturalFact: 'Beneath the melodies of Peru\'s "Pan Flutes," breath dances like whispers through reeds, a serenade that echoes the Andean landscapes and evokes ancient spirits.', country: 'Peru' },
+  { culturalFact: 'Among the mystique of Egypt, the "Valley of the Kings" cradles pharaohs in eternal rest, tombs that conceal treasures and mysteries beneath the shifting sands of time.', country: 'Egypt' },
+  { culturalFact: 'Within the serenity of Japanese "Bonsai," miniature trees emerge like sculptures, a harmonious connection between human touch and nature\'s wild essence.', country: 'Japan' },
+  { culturalFact: 'Amidst the songs of the Appalachian Mountains, "Bluegrass Music" emerges like a blend of storytelling and foot-tapping rhythms, a testament to American roots and soul.', country: 'United States' },
+  { culturalFact: 'In the heart of Thailand, "Floating Markets" drift like vibrant dreams on water, where boats become stalls, and commerce intertwines with local traditions and flavors.', country: 'Thailand' },
+  { culturalFact: 'Among the peaks of Nepal, "Mount Everest" rises like an eternal challenge, a pinnacle of human ambition that beckons adventurers and dreamers from around the world.', country: 'Nepal' },
+  { culturalFact: 'Beneath the rhythm of Cuba\'s "Rumba," dance and percussion fuse like a heartbeat, a spirited celebration that speaks to the soul of Afro-Cuban culture and resilience.', country: 'Cuba' },
+  { culturalFact: 'Within the vibrant colors of Mexico\'s "Alebrijes," fantastical creatures emerge like dreams given form, a testament to the imagination and spirit of Mexican artisans.', country: 'Mexico' },
+  { culturalFact: 'Amidst the coral reefs of Australia, "Aboriginal Dreamtime" stories drift like echoes, carrying wisdom and lore of creation, spirits, and the land itself.', country: 'Australia' },
+  { culturalFact: 'In the heart of Argentina, the "Gaucho" rides like a guardian of the Pampas, a cowboy whose tales mirror the vast landscapes and spirit of independence.', country: 'Argentina' },
+  { culturalFact: 'Beneath the rhythms of Indonesia, "Batik" emerges like painted poetry on fabric, a dance of wax and dyes that reflects traditions, symbols, and the hands of artisans.', country: 'Indonesia' },
+  { culturalFact: 'Within the melodies of Japan\'s "Shakuhachi," bamboo breathes like an ancient whisper, a soulful tune that transcends time and invites reflection on nature and self.', country: 'Japan' },
+  { culturalFact: 'Amidst the pages of Ghana\'s "Ananse Stories," the spider god Ananse spins tales like webs, clever and cunning, weaving lessons, humor, and the essence of folklore.', country: 'Ghana' },
+  { culturalFact: 'In the heart of Russia, the "Matryoshka Doll" emerges like a nesting symphony of generations, each doll a testament to the interconnectedness of family and tradition.', country: 'Russia' },
+  { culturalFact: 'Among the colors of India\'s "Holi" festival, laughter becomes a canvas, splattering joy and camaraderie in every hue as people playfully embrace the rainbow of life.', country: 'India' },
+  { culturalFact: 'Beneath the steps of Spain\'s "Flamenco," emotions rise like flames, a passionate dance that speaks of heartache, longing, and the fierce spirit of Andalusia.', country: 'Spain' },
+  { 
+    culturalFact: 'India: In the vibrant tapestry of India, the "Holi" festival paints the air with a kaleidoscope of colors, as people playfully drench each other in hues of joy to celebrate the arrival of spring.',
+    country: 'India'
+  },
+  { 
+    culturalFact: 'Italy: In the romantic streets of Venice, the "Carnival" enchants with masks that conceal secrets and fantasies, inviting a masquerade where identities become a tapestry of mystery.',
+    country: 'Italy'
+  },
+  { 
+    culturalFact: 'Japan: Amidst serene cherry blossom petals, "Hanami" blooms as a cherished tradition, where families and friends gather under blossoming trees to celebrate the fleeting beauty of spring.',
+    country: 'Japan'
+  },
+  { 
+    culturalFact: 'Mexico: On the Day of the Dead, altars adorned with marigolds and sugar skulls honor departed loved ones, weaving a tapestry that unites the living and the spirits in a celebration of life.',
+    country: 'Mexico'
+  },
+  { 
+    culturalFact: 'Egypt: Amidst the enigmatic pyramids, the "Book of the Dead" unfolds as a guide to the afterlife, offering insights into ancient beliefs and rituals that transcend the boundaries of mortality.',
+    country: 'Egypt'
+  },
+  { 
+    culturalFact: 'Brazil: In the pulsating rhythms of "Samba," dancers sway like palm trees in the wind, expressing the exuberance of Brazilian culture through movements that echo the heartbeats of a nation.',
+    country: 'Brazil'
+  },
+  { 
+    culturalFact: 'Greece: Within the stone columns of the "Parthenon," history and mythology converge, a testament to Athens\' golden age and the legacy of gods and heroes that continue to inspire.',
+    country: 'Greece'
+  },
+  { 
+    culturalFact: 'South Africa: Amidst the vast landscapes, "Ubuntu" weaves a philosophy of interconnectedness, inviting each person to recognize their shared humanity and the profound impact of their actions.',
+    country: 'South Africa'
+  },
+  { 
+    culturalFact: 'Japan: In the tranquility of "Tea Ceremony," every gesture becomes a meditation, a symphony of mindfulness that honors the tea, the host, and the timeless art of presence.',
+    country: 'Japan'
+  },
+  { 
+    culturalFact: 'Spain: Beneath the fervor of "La Tomatina," the streets of Buñol transform into a tomato battlefield, a celebration where ripe tomatoes become projectiles in a joyous and messy spectacle.',
+    country: 'Spain'
+  },
+  { 
+    culturalFact: 'Russia: Within the pages of "Russian Nesting Dolls," generations nest like dreams, each doll a symbol of connection and the layers of life that unfold as the smallest doll is revealed.',
+    country: 'Russia'
+  },
+  { 
+    culturalFact: 'China: Amidst the tranquil beauty of "Tai Chi," movements flow like whispers of ancient wisdom, a dance that harmonizes body and mind while connecting practitioners with the essence of nature.',
+    country: 'China'
+  },
+  { 
+    culturalFact: 'Australia: In the ancient landscapes of the "Aboriginal Dreamtime," creation stories form a cosmic narrative, connecting land, spirits, and humanity in a dance that spans time and place.',
+    country: 'Australia'
+  },
+  { 
+    culturalFact: 'Morocco: Among the vibrant "Medina" alleys, artisans craft intricate "Zellige" mosaics, each tile a piece of a grand puzzle that adorns architecture with geometric beauty and cultural history.',
+    country: 'Morocco'
+  },
+  { 
+    culturalFact: 'Kenya: In the Maasai Mara, the "Great Migration" paints the savannah with a spectacle of life, as wildebeests and zebras traverse the plains in a timeless journey of survival and renewal.',
+    country: 'Kenya'
+  },
+  { 
+    culturalFact: 'Peru: Amidst the Andean peaks, "Inti Raymi" honors the sun god Inti, a ritual that reenacts ancient traditions and the connection between humanity, the cosmos, and the land.',
+    country: 'Peru'
+  },
+  { 
+    culturalFact: 'Saudi Arabia: In the heart of Mecca, the "Hajj" pilgrimage becomes a sea of humanity, as millions of Muslims journey to fulfill a sacred duty, transcending borders and uniting in faith.',
+    country: 'Saudi Arabia'
+  },
+  { 
+    culturalFact: 'Canada: Amidst the towering totem poles of the First Nations, "Potlatch" emerges as a ceremony of giving, a celebration that weaves community and culture through acts of generosity.',
+    country: 'Canada'
+  },
+  { 
+    culturalFact: 'India: In the colorful whirlwind of "Diwali," homes illuminate like stars, celebrating the victory of light over darkness and inviting prosperity, family, and the triumph of good.',
+    country: 'India'
+  },
+  { 
+    culturalFact: 'Japan: Amidst the tranquil "Zen Gardens," meticulously raked gravel invites contemplation, each pattern a reflection of inner peace in a world of stillness and carefully arranged harmony.',
+    country: 'Japan'
+  },
+  { 
+    culturalFact: 'India: Amidst the vibrant chaos of Indian markets, the "Bargaining Ritual" unfolds, a dance of haggling where sellers and buyers engage in a playful banter that honors tradition and camaraderie.',
+    country: 'India'
+  },
+  { 
+    culturalFact: 'Japan: Within the elegance of "Kintsugi," broken pottery becomes art, as golden lacquer fills the cracks, celebrating imperfections and the journey of objects and people alike.',
+    country: 'Japan'
+  },
+  { 
+    culturalFact: 'Brazil: Amidst the rhythm of "Forró" music, partners embrace like the ebb and flow of the ocean, a dance that celebrates connection, desire, and the heartbeats of Brazil\'s diverse culture.',
+    country: 'Brazil'
+  },
+  { 
+    culturalFact: 'Egypt: In the serenity of the "Felucca" sailboat, Nile waters whisper ancient tales, as travelers embrace the gentle breeze and the timeless journey that links past and present.',
+    country: 'Egypt'
+  },
+  { 
+    culturalFact: 'South Korea: Amidst the vibrant lights of "Nanta," kitchen utensils transform into percussion instruments, a theatrical performance that blends humor, rhythm, and the art of culinary chaos.',
+    country: 'South Korea'
+  },
+  { 
+    culturalFact: 'Italy: Within the romantic streets of Florence, "Gelato" dances like a frozen sonnet, inviting taste buds to savor the embrace of artisanal flavors that capture the essence of la dolce vita.',
+    country: 'Italy'
+  },
+  { 
+    culturalFact: 'Indonesia: Amidst the lush jungles of Bali, the "Nyepi" silence falls, a day of meditation and reflection where the island rests, and locals turn inward to cleanse the soul and renew the spirit.',
+    country: 'Indonesia'
+  },
+  { 
+    culturalFact: 'Russia: In the enchanting realm of "Matryoshka" dolls, each nested figure emerges like a secret passage, a journey that uncovers wisdom, nostalgia, and the echoes of generations.',
+    country: 'Russia'
+  },
+  { 
+    culturalFact: 'China: Amidst the vast terracotta army, "Emperor Qin\'s Legacy" lives on, a testament to his ambition and the silent guardians who stand watch over his eternal empire.',
+    country: 'China'
+  },
+  { 
+    culturalFact: 'Morocco: Within the labyrinths of "Medina," the "Barter Ballet" unfolds, a spirited exchange that transcends language, revealing the vibrant culture of trade, connection, and human interaction.',
+    country: 'Morocco'
+  },
+  { 
+    culturalFact: 'New Zealand: Amidst the lush landscapes, "Māori Haka" reverberates like thunder, a fierce dance that embodies identity, unity, and the heartbeat of Aotearoa\'s indigenous culture.',
+    country: 'New Zealand'
+  },
+  { 
+    culturalFact: 'Iran: In the ancient heart of Persia, "Nowruz" heralds the new year, a vibrant celebration that weaves spring\'s awakening with ancient Zoroastrian traditions and the promise of renewal.',
+    country: 'Iran'
+  },
+  { 
+    culturalFact: 'Peru: Amidst the mystical "Nazca Lines," geoglyphs etch tales of the cosmos, a prehistoric masterpiece that invites contemplation on the connection between humanity and the universe.',
+    country: 'Peru'
+  },
+  { 
+    culturalFact: 'Thailand: Within the aroma of "Thai Street Food," vendors create a culinary symphony, a vibrant tapestry of flavors that celebrates the harmony of sweet, sour, spicy, and savory.',
+    country: 'Thailand'
+  },
+  { 
+    culturalFact: 'Kenya: In the savannah\'s embrace, "Maasai Jumping" becomes a dance of tradition, where warriors leap like flames, bridging generations and proving strength for the challenges that lie ahead.',
+    country: 'Kenya'
+  },
+  { 
+    culturalFact: 'Turkey: Amidst the grandeur of the "Hagia Sophia," history unfolds like a living parchment, a sanctuary that has witnessed empires rise and fall, a testament to Istanbul\'s enduring soul.',
+    country: 'Turkey'
+  },
+  { 
+    culturalFact: 'Mexico: Within the labyrinth of "Cenotes," nature\'s cathedrals invite exploration, as crystal-clear waters whisper stories of ancient Mayan rituals and the secrets of the earth.',
+    country: 'Mexico'
+  },
+  { 
+    culturalFact: 'Sweden: Amidst the majesty of the "Midsummer Pole," locals gather like blossoms in the sun, dancing, singing, and celebrating the longest day with traditions that honor light and nature.',
+    country: 'Sweden'
+  },
+  { 
+    culturalFact: 'Egypt: Within the embrace of the "Nile River," ancient secrets lie beneath the waters, stories of civilization, agriculture, and the river\'s eternal journey, forever shaping the land.',
+    country: 'Egypt'
+  },
+  { 
+    culturalFact: 'Argentina: In the rhythm of "Tango," bodies merge like whispers of passion, a dance that tells tales of love, desire, and the bittersweet embrace of Buenos Aires\' enigmatic soul.',
+    country: 'Argentina'
+  },
+
 ];
 //Now lets add the cultural facts through code
 //CulturalFact.insertMany()
